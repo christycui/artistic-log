@@ -10,6 +10,34 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+html{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar{
+  height: 100px;
+  border: none;
+}
+.navbar-collapse{
+  width: 70%;
+  margin-left: 140px !important;
+  vertical-align: middle;
+  margin-top: 30px;
+  border: 2.5px solid grey !important;
+}
+.navbar-brand{
+  text-align:center;
+}
+.glyphicon.glyphicon-edit{
+  font-size: 50px;
+}
+
+footer{
+  vertical-align: text-bottom;
+  text-align:center;
+}
