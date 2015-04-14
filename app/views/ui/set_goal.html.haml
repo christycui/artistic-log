@@ -1,0 +1,37 @@
+%section.set_goal.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      = form_for '' do |f|
+        %header
+          %h1 Set a Goal
+        %br/
+        %br/
+        %fieldset
+          .form-group
+            .row
+              .col-sm-2
+                = f.label :goal, "I want to:"
+              .col-sm-4
+                = f.select :goal, ["play an instrument", "write", "paint"], class: 'form-control'
+          .form-group
+            .row
+              .col-sm-2
+                = f.label :frequency
+              .col-sm-4
+                = f.select :frequency, ["per week", "per day"], class: 'form-control'
+          .form-group
+            .row
+              .col-sm-2
+                = f.label :unit
+              .col-sm-4
+                = f.select :unit, ["hours", "minutes", "words"], class: 'form-control'
+          .form-group
+            .row
+              .col-sm-2
+                = f.label :quantity
+              .col-sm-4
+                = f.text_field :quantity, class: 'form-control'
+        %br/
+        %fieldset.form-group.action.submit_btn
+          = f.submit "Create Goal", class: "btn btn-default"
+  

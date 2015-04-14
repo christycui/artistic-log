@@ -22,22 +22,39 @@ html{
 .navbar{
   height: 100px;
   border: none;
+  background: none;
 }
 .navbar-collapse{
   width: 70%;
   margin-left: 140px !important;
   vertical-align: middle;
   margin-top: 30px;
-  border: 2.5px solid grey !important;
+  border: 2.5px solid #8B0000 !important;
+  ul li {
+    font-weight: bold;
+  }
 }
 .navbar-brand{
   text-align:center;
+  p {
+    color: #8B0000;
+  }
 }
 .glyphicon.glyphicon-edit{
   font-size: 50px;
+  color: #8B0000;
 }
 
 footer{
   vertical-align: text-bottom;
   text-align:center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sign_in{
+  margin-left: 15%;
+}
+.submit_btn{
+  margin-left: 40%;
 }
