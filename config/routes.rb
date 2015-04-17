@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  root 'ui#index'
+  root 'pages#front'
+  get '/login', to: 'sessions#new'
+  get '/register', to: 'users#new'
+  resources 'sessions', only: [:create]
+  resources 'users', only: [:create]
+  get '/dashboard', to: 'goals#index'
   get 'ui/(:action)', controller: 'ui'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

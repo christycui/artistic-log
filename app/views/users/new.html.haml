@@ -1,0 +1,16 @@
+%section.sign_in.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      = bootstrap_form_for(@user, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-4") do |f|
+        %header
+          %h1 Register
+        %br/
+        %br/
+        %fieldset
+          = f.email_field :name
+          = f.email_field :email, label: "Email Address"
+          = f.password_field :password
+        %br/
+        %fieldset
+          = f.submit "Join!", class: "btn btn-default submit_btn"
+  
