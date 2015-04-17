@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   get '/register', to: 'users#new'
   resources 'sessions', only: [:create]
+  delete '/logout', to: 'sessions#destroy'
   resources 'users', only: [:create]
   get '/dashboard', to: 'goals#index'
   get 'ui/(:action)', controller: 'ui'
