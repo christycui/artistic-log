@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   resources 'sessions', only: [:create]
   delete '/logout', to: 'sessions#destroy'
-  resources 'users', only: [:create]
+  resources 'users', only: [:create, :show]
   get '/dashboard', to: 'goals#index'
   get 'ui/(:action)', controller: 'ui'
   # The priority is based upon order of creation: first created -> highest priority.

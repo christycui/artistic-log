@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
   
   def require_user
-    access_denied if logged_in?
+    access_denied if !logged_in?
   end
   
   def access_denied
