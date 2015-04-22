@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :goals
+  
   has_secure_password
   validates_presence_of :name
   validates :email, presence: true, format: /@/, uniqueness: true

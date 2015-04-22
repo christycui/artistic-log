@@ -1,0 +1,25 @@
+%section.sign_in.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      = bootstrap_form_for(@goal, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-4") do |f|
+        %header
+          %h1 Add a Goal
+        %br/
+        %br/
+        %fieldset.goal
+          = f.select :title1, ["practice guitar", "practice piano",  "write", "paint", "custom"], label: "Title", id: 'title1'
+          = f.text_field :title2, id: 'title2', hide_label: true
+          = f.select :frequency, ["per week", "per day"]
+          = f.select :unit, ["hours", "minutes", "words"]
+          = f.text_field :quantity, value: '5', col: 100
+        %br/
+        %fieldset
+          = f.submit "Create Goal", class: "btn btn-success submit_btn"
+      %div
+        %h1
+          %i.quo &ldquo;
+        %h3
+          %i{id: 'quote'}
+        %h1
+          %i.quo#right-quo &rdquo;
+  
