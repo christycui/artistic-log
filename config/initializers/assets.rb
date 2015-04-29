@@ -1,0 +1,1 @@
+Rails.application.config.assets.precompile += ['goal.js', 'style.css']
