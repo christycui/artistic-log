@@ -6,7 +6,7 @@ class GoalsController < ApplicationController
   end
   
   def create
-    @goal = Goal.new(params.require(:goal).permit(:title, :frequency, :unit, :quantity))
+    @goal = Goal.new(params.require(:goal).permit(:title1, :title2, :frequency, :unit, :quantity))
     if @goal.save
       flash[:notice] = 'New goal created.'
       redirect_to dashboard_path
