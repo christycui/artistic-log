@@ -1,3 +1,7 @@
+def set_current_user(user=nil)
+  session[:user_id] = (user || Fabricate(:user)).id
+end
+
 def sign_in(user=nil)
   visit login_path
   fill_in("Email Address", with: user.email)
@@ -6,9 +10,9 @@ def sign_in(user=nil)
 end
 
 def register(user=nil)
-    visit register_path
-    fill_in("Name", with: user.name)
-    fill_in("Email Address", with: user.email)
-    fill_in("Password", with: user.password)
-    click_button("Join!")
+  visit register_path
+  fill_in("Name", with: user.name)
+  fill_in("Email Address", with: user.email)
+  fill_in("Password", with: user.password)
+  click_button("Join!")
 end

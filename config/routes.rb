@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources 'users', only: [:create, :show, :update]
   get '/dashboard', to: 'goals#index'
   get 'ui/(:action)', controller: 'ui'
-  resources 'goals', only: [:new, :create]
+  resources 'goals', only: [:new, :create, :edit, :update, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -8,13 +8,22 @@ class Goal < ActiveRecord::Base
   
   def make_title
     if title1_is_custom?
-      self.title = title2
+      self.title = format_title(title2)
     else
-      self.title = title1
+      self.title = format_title(title1)
     end
   end
   
   def title1_is_custom?
-    title1 == 'custom'
+    title1 == 'Custom'
+  end
+  
+  def description
+    self.quantity.to_s + ' ' + self.unit + ' ' + self.frequency
+  end
+  
+  private
+  def format_title(title)
+    title.split.map(&:capitalize).join(' ')
   end
 end

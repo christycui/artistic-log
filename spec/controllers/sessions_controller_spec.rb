@@ -1,6 +1,20 @@
 require "rails_helper"
 
 describe SessionsController do
+  
+  describe "GET new" do
+    
+    context "when there is a current user" do
+      
+      it "redirects to dashboard path" do
+        set_current_user
+        get :new
+        expect(response).to redirect_to dashboard_path
+      end
+      
+    end
+  end
+  
   describe "POST create" do
     
     let(:user) { Fabricate(:user) }

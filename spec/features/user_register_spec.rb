@@ -3,9 +3,9 @@ require 'rails_helper'
 feature "user registers a new account" do
   
   scenario "user registers and stays signed in" do
-    user = Fabricate.attributes_for(:user)
+    user = Fabricate.build(:user)
     register(user)
-    expect(page).to have_content(user.name)
+    expect(page).to have_content("Add a Goal")
   end
   
   scenario "user fails to register with incorrect input" do
