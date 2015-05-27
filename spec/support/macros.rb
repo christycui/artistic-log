@@ -16,3 +16,7 @@ def register(user=nil)
   fill_in("Password", with: user.password)
   click_button("Join!")
 end
+
+def clear_current_user
+  session[:user_id] = nil
+end

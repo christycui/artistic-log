@@ -3,5 +3,5 @@ Fabricator(:goal) do
   title2 { Faker::Lorem.words.join(' ') }
   frequency { 'per day' }
   unit { 'hours' }
-  quantity { '5' }
+  quantity { '1' }
 end

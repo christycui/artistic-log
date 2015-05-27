@@ -47,7 +47,20 @@ describe UsersController do
     end
   end
   
+  describe "GET show" do
+    
+    it_behaves_like "requires sign in" do
+      let(:action) { get :show, id: 1 }
+    end
+    
+  end
+  
   describe "PATCH update" do
+    
+    it_behaves_like "requires sign in" do
+      let(:action) { patch :update, id: 1 }
+    end
+    
     context "when input is valid" do
       
       let(:current_user) { Fabricate(:user) }

@@ -10,7 +10,7 @@ feature "user interacts with goals" do
     click_link "New Goal"
     select("Practice Guitar", from: "Title")
     select("per week", from: "Frequency")
-    select("hours", from: "Unit")
+    select("hour(s)", from: "Unit")
     fill_in("Quantity", with: "5")
     click_button("Create Goal")
     expect(page).to have_content("New goal created.")
@@ -22,7 +22,7 @@ feature "user interacts with goals" do
     select("Custom", from: "Title")
     find(:css, '#title2').set('Drawing')
     select("per week", from: "Frequency")
-    select("hours", from: "Unit")
+    select("hour(s)", from: "Unit")
     fill_in("Quantity", with: "5")
     click_button("Create Goal")
     expect(page).to have_content("New goal created.")

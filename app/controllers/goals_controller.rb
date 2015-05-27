@@ -32,18 +32,15 @@ class GoalsController < ApplicationController
       flash[:notice] = 'Your goal is updated.'
       redirect_to dashboard_path
     else
-      flash[:error] = 'Invalid input. Goal not updated.'
+      flash[:error] = 'Invalid input. Goal is not updated.'
       render 'new'
     end
   end
   
   def destroy
     @goal = Goal.find(params[:id])
-    if @goal.destroy
-      flash[:notice] = 'Goal deleted.'
-    else
-      flash[:error] = 'Something went wrong. Goal is not deleted.'
-    end
+    @goal.destroy if @goal.user == current_user
+    flash[:notice] = 'Goal deleted.'
     redirect_to dashboard_path
   end
     
