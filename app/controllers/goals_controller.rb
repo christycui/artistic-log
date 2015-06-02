@@ -3,6 +3,7 @@ class GoalsController < ApplicationController
   
   def index
     @goals = Goal.where(user: current_user)
+    @date = Date.today
   end
   
   def new

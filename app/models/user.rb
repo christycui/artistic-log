@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :goals
+  has_many :entries, through: :goals
   
   has_secure_password
   validates_presence_of :name

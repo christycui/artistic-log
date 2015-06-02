@@ -1,0 +1,22 @@
+%section.sign_in.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      = bootstrap_form_for(@entry, url: goal_entries_path(@goal), layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-4") do |f|
+        %header
+          %h1= @entry.new_record? ? "Add Journal" : "Edit Journal"
+          %h3
+            %i= 'Goal: ' + @goal.description
+        %br/
+        %br/
+        %fieldset.journal
+          = f.text_field :date, class: 'datepicker', value: Date.today
+          = f.form_group :status, label: { text: "Did you practice today?" } do
+            = f.radio_button :status, 'Yes', label: 'Yes'
+            = f.radio_button :status, 'No', label: "No"
+            = f.radio_button :status, 'Somewhere in between', label: 'Somewhere in between'
+          = f.text_field :quantity, control_col: "col-sm-2", append: @goal.unit, label: 'How long?'
+          = f.text_area :content, label: "Content (Optional)"
+        %br/
+        %fieldset
+          = f.submit @entry.new_record? ? "Create Journal" : "Update Journal", class: "btn btn-success submit_btn"
+  
