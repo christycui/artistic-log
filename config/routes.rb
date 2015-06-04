@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'goals#index'
   get 'ui/(:action)', controller: 'ui'
   resources 'goals', only: [:new, :create, :edit, :update, :destroy] do
+    member do
+      post :change_month
+    end
     resources 'entries', only: [:new, :create, :edit, :update]
   end
   # The priority is based upon order of creation: first created -> highest priority.

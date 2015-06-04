@@ -7,9 +7,10 @@ class EntriesController < ApplicationController
   end
   
   def create
+    @goal = Goal.find(params[:goal_id])
     @entry = Entry.new(entry_params)
     @entry.user = current_user
-    @entry.goal = Goal.find(params[:goal_id])
+    @entry.goal = @goal
     if @entry.save
       flash[:success] = "New log created."
       redirect_to dashboard_path

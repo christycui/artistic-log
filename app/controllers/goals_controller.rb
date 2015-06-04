@@ -3,7 +3,7 @@ class GoalsController < ApplicationController
   
   def index
     @goals = Goal.where(user: current_user)
-    @date = Date.today
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
   
   def new
@@ -43,6 +43,14 @@ class GoalsController < ApplicationController
     @goal.destroy if @goal.user == current_user
     flash[:notice] = 'Goal deleted.'
     redirect_to dashboard_path
+  end
+  
+  def change_month
+    @goal = Goal.find(params[:id])
+    @date = params[:month]
+    respond_to do |format|
+      format.js
+    end
   end
     
   private
