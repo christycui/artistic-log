@@ -1,10 +1,10 @@
-$(function() {
+$(document).ready(function() {
   $(".datepicker").datepicker({
      dateFormat: "yy-mm-dd",
      maxDate: "0d"
   });
   
-  if ($("option[value='custom']").is(":checked")) { 
+  if ($("option[value='Custom']").is(":checked")) { 
     $("#title2").show(); 
   } else {
     $("#title2").hide(); 

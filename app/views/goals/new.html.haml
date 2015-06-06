@@ -7,11 +7,15 @@
         %br/
         %br/
         %fieldset.goal
-          = f.select :title1, title_options, label: "Title", id: 'title1'
-          = f.text_field :title2, id: 'title2', hide_label: true
+          - if title_options.include?(@goal.title)
+            = f.select :title1, title_options, label: "Title", id: 'title1'
+            = f.text_field :title2, id: 'title2', hide_label: true
+          - else
+            = f.select :title1, title_options, label: "Title", id: 'title1', selected: 'Custom'
+            = f.text_field :title2, id: 'title2', hide_label: true, value: @goal.title
           = f.select :frequency, frequency_options
           = f.select :unit, unit_options
-          = f.text_field :quantity, value: '5', control_col: "col-sm-2", append: "hour(s)"
+          = f.text_field :quantity, control_col: "col-sm-2", append: "hour(s)"
         %br/
         %fieldset
           = f.submit @goal.new_record? ? "Create Goal" : "Update Goal", class: "btn btn-success submit_btn"

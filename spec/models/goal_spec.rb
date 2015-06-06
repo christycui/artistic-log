@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Goal do
   it { should belong_to(:user) }
+  it { should have_many(:entries) }
   it { should validate_presence_of(:title1) }
   it { should validate_presence_of(:frequency) }
   it { should validate_presence_of(:unit) }
@@ -46,6 +47,6 @@ end
 describe '#description' do
   it "generates a description for the goal" do
     goal = Fabricate(:goal, quantity: '1', unit: 'hour(s)', frequency: 'per day')
-    expect(goal.description).to eq('1.0 hour(s) per day')
+    expect(goal.description).to eq("#{goal.title} for 1.0 hour(s) per day")
   end
 end

@@ -2,33 +2,7 @@
   .goal_header
     %h3= goal.title
     %p= goal.description
-    %div{:id => "calendar_#{goal.id}"}
-      .calendar-title
-        = link_to change_month_goal_path(goal.id, month: @date.beginning_of_month - 1), method: 'post', remote: true do
-          %span.glyphicon.glyphicon-chevron-left.btn-lg
-        %h3= @date.strftime('%B %Y')
-        = link_to change_month_goal_path(goal.id, month: @date.end_of_month + 1), method: 'post', remote: true do
-          %span.glyphicon.glyphicon-chevron-right.btn-lg
-    = calendar_for((@goal ? @goal.entries : goal.entries), year: @date.year, month: @date.month) do |t|
-      .table-reponsive
-        %table.table.table-striped
-          = t.head('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun')
-          = t.day do |day, entries|
-            = day.day
-            - entries.each do |entry|
-              .entry-icon
-                - case entry.status 
-                - when 'Yes'
-                  %span.glyphicon.glyphicon-ok-sign
-                - when 'No'
-                  %span.glyphicon.glyphicon-remove-sign
-                - else
-                  %span.glyphicon.glyphicon-minus-sign
-              .show-entry
-                %ul
-                  %li= entry.quantity.to_s + ' ' + goal.unit
-                  %li= entry.content
-                  %small= link_to "Edit", edit_goal_entry_path(goal, entry)
+    = render 'goals/calendar', goal: goal, date: @date
   = link_to "[Update Goal]", edit_goal_path(goal)
   = link_to "[Delete Goal]", goal_path(goal), method: :delete
   = link_to "[Add Journal Entry]", new_goal_entry_path(goal)

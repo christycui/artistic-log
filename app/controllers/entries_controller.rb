@@ -12,7 +12,7 @@ class EntriesController < ApplicationController
     @entry.user = current_user
     @entry.goal = @goal
     if @entry.save
-      flash[:success] = "New log created."
+      flash[:notice] = "New log created."
       redirect_to dashboard_path
     else
       render 'new'
@@ -23,6 +23,17 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
     @goal = Goal.find(params[:goal_id])
     render 'new'
+  end
+  
+  def update
+    @goal = Goal.find(params[:goal_id])
+    @entry = Entry.find(params[:id])
+    if @entry.update(entry_params)
+      flash[:notice] = "Journal entry updated."
+      redirect_to dashboard_path
+    else
+      render 'new'
+    end
   end
   
   private

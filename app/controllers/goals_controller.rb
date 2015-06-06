@@ -47,7 +47,7 @@ class GoalsController < ApplicationController
   
   def change_month
     @goal = Goal.find(params[:id])
-    @date = params[:month]
+    @date = Date.parse(params[:month])
     respond_to do |format|
       format.js
     end

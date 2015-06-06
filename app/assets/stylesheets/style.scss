@@ -18,6 +18,9 @@ html{
     float: right;
   }
 }
+td{
+  height: 50px;
+}
 .entry-icon{
   .glyphicon{
     float: right;
@@ -72,7 +75,7 @@ html{
 footer{
   vertical-align: text-bottom;
   text-align:center;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 20px;
 }
 

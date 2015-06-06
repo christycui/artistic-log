@@ -10,4 +10,5 @@ module ApplicationHelper
   def unit_options
     ["hour(s)", "minutes", "words", "time(s)"]
   end
+  
 end

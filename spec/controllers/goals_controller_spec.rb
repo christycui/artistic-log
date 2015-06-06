@@ -17,6 +17,16 @@ describe GoalsController do
       expect(assigns(:goals)).to eq([goal])
     end
     
+    it "sets @date variable to today when no params for month" do
+      get :index
+      expect(assigns(:date)).to eq(Date.today)
+    end
+    
+    it "sets @date variable when month param is present" do
+      get :index, month: Date.new(2015,5,1)
+      expect(assigns(:date)).to eq(Date.new(2015,5,1))
+    end
+    
   end
   
   describe 'GET new' do
@@ -174,6 +184,20 @@ describe GoalsController do
       delete :destroy, id: goal.id
       expect(flash[:notice]).not_to be_blank
     end
+    
+  end
+  
+  describe 'POST change_month'do
+    
+    it_behaves_like "requires sign in" do
+      let(:action) { delete :destroy, id: 1 }
+    end
+    
+    it 'sets @goal variable'
+    
+    it 'sets @date variable'
+    
+    it 'renders js template'
     
   end
   
