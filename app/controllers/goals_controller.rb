@@ -23,12 +23,12 @@ class GoalsController < ApplicationController
   end
   
   def edit
-    @goal = Goal.find(params[:id])
+    @goal = Goal.find_by slug: params[:id]
     render 'new'
   end
   
   def update
-    @goal = Goal.find(params[:id])
+    @goal = Goal.find_by slug: params[:id]
     if @goal.update(goal_params)
       flash[:notice] = 'Your goal is updated.'
       redirect_to dashboard_path
@@ -39,14 +39,14 @@ class GoalsController < ApplicationController
   end
   
   def destroy
-    @goal = Goal.find(params[:id])
+    @goal = Goal.find_by slug: params[:id]
     @goal.destroy if @goal.user == current_user
     flash[:notice] = 'Goal deleted.'
     redirect_to dashboard_path
   end
   
   def change_month
-    @goal = Goal.find(params[:id])
+    @goal = Goal.find_by slug: params[:id]
     @date = Date.parse(params[:month])
     respond_to do |format|
       format.js
