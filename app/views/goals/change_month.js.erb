@@ -1,1 +1,1 @@
-$("#calendar_<%= @goal.id %>").html(<%= escape_javascript(render('goals/calendar', goal: @goal, date: @date)) %>);
+$("#calendar_<%= @goal.slug %>").html("<%= escape_javascript(render('goals/calendar', goal: @goal, date: @date)) %>");

@@ -1,4 +1,5 @@
 class Goal < ActiveRecord::Base
+  include Sluggable
   attr_accessor :title1, :title2
   
   belongs_to :user
@@ -6,6 +7,8 @@ class Goal < ActiveRecord::Base
   before_save :make_title
   validates_presence_of :title1, :frequency, :unit, :quantity
   validates_presence_of :title2, if: :title1_is_custom?
+  
+  sluggable_column :title
   
   def make_title
     if title1_is_custom?
