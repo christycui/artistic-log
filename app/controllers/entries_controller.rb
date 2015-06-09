@@ -3,11 +3,11 @@ class EntriesController < ApplicationController
   
   def new
     @entry = Entry.new
-    @goal = Goal.find(params[:goal_id])
+    @goal = Goal.find_by slug: params[:goal_id]
   end
   
   def create
-    @goal = Goal.find(params[:goal_id])
+    @goal = Goal.find_by slug: params[:goal_id]
     @entry = Entry.new(entry_params)
     @entry.user = current_user
     @entry.goal = @goal
@@ -21,12 +21,12 @@ class EntriesController < ApplicationController
   
   def edit
     @entry = Entry.find(params[:id])
-    @goal = Goal.find(params[:goal_id])
+    @goal = Goal.find_by slug: params[:goal_id]
     render 'new'
   end
   
   def update
-    @goal = Goal.find(params[:goal_id])
+    @goal = Goal.find_by slug: params[:goal_id]
     @entry = Entry.find(params[:id])
     if @entry.update(entry_params)
       flash[:notice] = "Journal entry updated."
