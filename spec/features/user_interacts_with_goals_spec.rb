@@ -44,10 +44,10 @@ feature "user interacts with goals" do
     expect(page).to have_content("Goal deleted.")
   end
   
-  scenario "user changes month of a goal calendar" do
+  scenario "user changes month of a goal calendar", js: true do
     Fabricate(:goal, user: user)
     visit dashboard_path
-    find(".glyphicon-chevron-left").click
+    find(".glyphicon-chevron-left").trigger('click')
     expect(page).to have_content((Date.today.beginning_of_month - 1).strftime('%B %Y'))
   end
   
