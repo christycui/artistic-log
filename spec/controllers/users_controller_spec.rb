@@ -57,13 +57,13 @@ describe UsersController do
   
   describe "PATCH update" do
     
+    let(:current_user) { Fabricate(:user) }
+    
     it_behaves_like "requires sign in" do
-      let(:action) { patch :update, id: 1 }
+      let(:action) { patch :update, id: current_user }
     end
     
     context "when input is valid" do
-      
-      let(:current_user) { Fabricate(:user) }
       
       before do
         session[:user_id] = current_user.id
@@ -85,8 +85,6 @@ describe UsersController do
     end
     
     context "when input is invalid" do
-      
-      let(:current_user) { Fabricate(:user) }
       
       before do
         session[:user_id] = current_user.id

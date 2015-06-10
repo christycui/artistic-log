@@ -10,10 +10,10 @@ describe EntriesController do
     let(:goal) { Fabricate(:goal) }
     
     it_behaves_like 'requires sign in' do
-      let(:action) { get :new, goal_id: goal.id }
+      let(:action) { get :new, goal_id: goal }
     end
     
-    before { get :new, goal_id: goal.id }
+    before { get :new, goal_id: goal }
     
     it "sets @entry variable" do
       expect(assigns(:entry)).to be_new_record
@@ -31,12 +31,12 @@ describe EntriesController do
     let(:goal) { Fabricate(:goal) }
     
     it_behaves_like 'requires sign in' do
-      let(:action) { post :create, goal_id: goal.id }
+      let(:action) { post :create, goal_id: goal }
     end
     
     context 'with valid input' do
       
-      before { post :create, goal_id: goal.id, entry: Fabricate.attributes_for(:entry) }
+      before { post :create, goal_id: goal, entry: Fabricate.attributes_for(:entry) }
       
       it 'creates a journal entry' do
         expect(Entry.count).to eq(1)
@@ -62,7 +62,7 @@ describe EntriesController do
     
     context 'with invalid input' do
       
-      before { post :create, goal_id: goal.id, entry: Fabricate.attributes_for(:entry, date: '') }
+      before { post :create, goal_id: goal, entry: Fabricate.attributes_for(:entry, date: '') }
       
       it 'does not create a journal entry' do
         expect(Entry.count).to eq(0)
@@ -89,10 +89,10 @@ describe EntriesController do
     let(:entry) { Fabricate(:entry) }
 
     it_behaves_like 'requires sign in' do
-      let(:action) { get :edit, goal_id: goal.id, id: entry.id }
+      let(:action) { get :edit, goal_id: goal, id: entry }
     end
     
-    before { get :edit, goal_id: goal.id, id: entry.id }
+    before { get :edit, goal_id: goal, id: entry }
     
     it 'sets @goal variable' do
       expect(assigns(:goal)).to eq(goal)
@@ -114,12 +114,12 @@ describe EntriesController do
     let(:entry) { Fabricate(:entry) }
 
     it_behaves_like 'requires sign in' do
-      let(:action) { post :update, goal_id: goal.id, id: entry.id }
+      let(:action) { post :update, goal_id: goal, id: entry }
     end
     
     context 'with valid input' do
       
-      before { post :update, id: entry.id, goal_id: goal.id, entry: {date: Date.new(2015,5,1), status: entry.status, quantity: entry.quantity, content: entry.content} }
+      before { post :update, id: entry.id, goal_id: goal.slug, entry: {date: Date.new(2015,5,1), status: entry.status, quantity: entry.quantity, content: entry.content} }
       
       it 'updates the journal entry' do
         expect(entry.reload.date).to eq(Date.new(2015,5,1))
@@ -137,7 +137,7 @@ describe EntriesController do
     
     context 'with invalid input' do
       
-      before { post :update, goal_id: goal.id, id: entry.id, entry: {date: '', status: entry.status, quantity: entry.quantity, content: entry.content} }
+      before { post :update, goal_id: goal, id: entry, entry: {date: '', status: entry.status, quantity: entry.quantity, content: entry.content} }
       
       it 'does not update the journal entry' do
         expect(entry.reload.date).not_to eq('')
@@ -157,5 +157,5 @@ describe EntriesController do
       
     end
   end
-  
+
 end

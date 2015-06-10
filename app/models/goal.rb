@@ -4,7 +4,7 @@ class Goal < ActiveRecord::Base
   
   belongs_to :user
   has_many :entries
-  before_save :make_title
+  after_validation :make_title
   validates_presence_of :title1, :frequency, :unit, :quantity
   validates_presence_of :title2, if: :title1_is_custom?
   

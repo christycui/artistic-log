@@ -103,7 +103,7 @@ describe GoalsController do
     
     it 'sets @goal variable' do
       goal = Fabricate(:goal)
-      get :edit, id: goal.id
+      get :edit, id: goal.slug
       expect(assigns(:goal)).to eq(goal)
     end
     
@@ -114,11 +114,11 @@ describe GoalsController do
     let(:goal) { Fabricate(:goal) }
     
     it_behaves_like "requires sign in" do
-      let(:action) { post :update, id: 1 }
+      let(:action) { post :update, id: goal.slug }
     end
     
     context 'with valid input' do
-      before { post :update, id: goal.id, goal: { title1: 'Custom', title2: goal.title, frequency: goal.frequency, unit: goal.unit, quantity: '2' } }
+      before { post :update, id: goal.slug, goal: { title1: 'Custom', title2: goal.title, frequency: goal.frequency, unit: goal.unit, quantity: '2' } }
       
       it 'updates the goal' do
         expect(goal.reload.quantity).to eq(2.0)
@@ -136,7 +136,7 @@ describe GoalsController do
     
     context 'with invalid input' do
 
-      before { post :update, id: goal.id, goal: { title1: 'Custom', title2: goal.title, frequency: goal.frequency, unit: goal.unit, quantity: '' } }
+      before { post :update, id: goal.slug, goal: { title1: 'Custom', title2: goal.title, frequency: goal.frequency, unit: goal.unit, quantity: '' } }
       
       it 'sets @goal variable' do
         expect(assigns(:goal)).to eq(goal)
@@ -162,26 +162,26 @@ describe GoalsController do
     
     it 'deletes the goal' do
       goal = Fabricate(:goal, user: user)
-      delete :destroy, id: goal.id
+      delete :destroy, id: goal.slug
       expect(Goal.count).to eq(0)
     end
     
     it 'does not delete the goal if the goal does not belong to current user' do
       user2 = Fabricate(:user)
       goal = Fabricate(:goal, user: user2)
-      delete :destroy, id: goal.id
+      delete :destroy, id: goal.slug
       expect(Goal.count).to eq(1)
     end
     
     it 'redirects to dashboard path' do
       goal = Fabricate(:goal, user: user)
-      delete :destroy, id: goal.id
+      delete :destroy, id: goal.slug
       expect(response).to redirect_to dashboard_path
     end
     
     it 'sets flash notice' do
       goal = Fabricate(:goal, user: user)
-      delete :destroy, id: goal.id
+      delete :destroy, id: goal.slug
       expect(flash[:notice]).not_to be_blank
     end
     
@@ -190,14 +190,19 @@ describe GoalsController do
   describe 'POST change_month'do
     
     it_behaves_like "requires sign in" do
-      let(:action) { delete :destroy, id: 1 }
+      let(:action) { post :change_month, id: 1 }
     end
     
-    it 'sets @goal variable'
+    let(:goal) { Fabricate(:goal) }
+    before { post :change_month, format: 'js', id: goal.slug, month: '2015-7-1' }
     
-    it 'sets @date variable'
+    it 'sets @goal variable' do
+      expect(assigns(:goal)).to eq(goal)
+    end
     
-    it 'renders js template'
+    it 'sets @date variable' do
+      expect(assigns(:date)).to eq(Date.new(2015,7,1))
+    end
     
   end
   
