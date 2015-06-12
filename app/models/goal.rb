@@ -25,7 +25,7 @@ class Goal < ActiveRecord::Base
   end
   
   def make_title2
-    self.title2 = title if !title_options.include?(title)
+    self.title2 = !title_options.include?(title) ? title : ''
   end
   
   def title1_is_custom?
