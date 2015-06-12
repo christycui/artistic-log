@@ -3,16 +3,13 @@ require 'rails_helper'
 describe Goal do
   it { should belong_to(:user) }
   it { should have_many(:entries) }
-  context 'validations' do
-    subject { Fabricate(:goal) }
-    it { should validate_presence_of(:title1) }
-    it { should validate_presence_of(:frequency) }
-    it { should validate_presence_of(:unit) }
-    it { should validate_presence_of(:quantity) }
-  end
+  it { should validate_presence_of(:title1) }
+  it { should validate_presence_of(:frequency) }
+  it { should validate_presence_of(:unit) }
+  it { should validate_presence_of(:quantity) }
   
   context 'if title1 has a value of custom' do
-    subject { Fabricate(:goal, title1: 'Custom', title2: 'Sleep') }
+    subject { Fabricate.build(:goal, title1: 'Custom', title2: 'Sleep') }
     it { should validate_presence_of(:title2) }
   end
 end

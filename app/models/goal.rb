@@ -6,6 +6,7 @@ class Goal < ActiveRecord::Base
   belongs_to :user
   has_many :entries
   after_validation :make_title
+  before_save :make_title1, :make_title2
   validates_presence_of :title1, :frequency, :unit, :quantity
   validates_presence_of :title2, if: :title1_is_custom?
   
@@ -20,11 +21,11 @@ class Goal < ActiveRecord::Base
   end
   
   def make_title1
-    title1 = title_options.include?(title) ? title : 'Custom'
+    self.title1 = title_options.include?(title) ? title : 'Custom'
   end
   
   def make_title2
-    title2 = title if !title_options.include?(title)
+    self.title2 = title if !title_options.include?(title)
   end
   
   def title1_is_custom?
