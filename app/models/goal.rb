@@ -1,5 +1,6 @@
 class Goal < ActiveRecord::Base
   include Sluggable
+  include ApplicationHelper
   attr_accessor :title1, :title2
   
   belongs_to :user
@@ -12,10 +13,18 @@ class Goal < ActiveRecord::Base
   
   def make_title
     if title1_is_custom?
-      self.title = format_title(title2)
+      self.title = title2.split.map(&:capitalize).join(' ')
     else
-      self.title = format_title(title1)
+      self.title = title1
     end
+  end
+  
+  def make_title1
+    title1 = title_options.include?(title) ? title : 'Custom'
+  end
+  
+  def make_title2
+    title2 = title if !title_options.include?(title)
   end
   
   def title1_is_custom?
@@ -26,8 +35,5 @@ class Goal < ActiveRecord::Base
     self.title + ' for ' + self.quantity.to_s + ' ' + self.unit + ' ' + self.frequency
   end
   
-  private
-  def format_title(title)
-    title.split.map(&:capitalize).join(' ')
-  end
+
 end
