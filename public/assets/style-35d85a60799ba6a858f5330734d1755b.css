@@ -1,0 +1,137 @@
+/* line 1, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+html {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 6, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.calendar-title {
+  text-align: center;
+}
+/* line 8, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.calendar-title h3 {
+  display: inline;
+}
+
+/* line 12, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.show-entry {
+  display: none;
+}
+/* line 14, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.show-entry ul {
+  list-style-type: none;
+}
+/* line 17, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.show-entry small {
+  float: right;
+}
+
+/* line 21, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+td {
+  height: 50px;
+}
+
+/* line 25, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.entry-icon .glyphicon {
+  float: right;
+}
+
+/* line 29, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.glyphicon-ok-sign {
+  color: green;
+}
+
+/* line 32, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.glyphicon-remove-sign {
+  color: red;
+}
+
+/* line 35, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.glyphicon-minus-sign {
+  color: yellow;
+}
+
+/* line 38, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.ui-datepicker {
+  z-index: 9999999 !important;
+  background: white;
+  border: 1px solid #555;
+}
+/* line 42, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.ui-datepicker .ui-datepicker-next {
+  float: right;
+}
+/* line 45, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.ui-datepicker .ui-datepicker-title {
+  text-align: center;
+}
+
+/* line 49, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.navbar {
+  height: 100px;
+  border: none;
+  background: none;
+}
+
+/* line 54, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.navbar-collapse {
+  width: 70%;
+  margin-left: 140px !important;
+  vertical-align: middle;
+  margin-top: 30px;
+  border: 2.5px solid #8B0000 !important;
+}
+/* line 60, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.navbar-collapse ul li {
+  font-weight: bold;
+}
+
+/* line 64, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.navbar-brand {
+  text-align: center;
+}
+/* line 66, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.navbar-brand p {
+  color: #8B0000;
+}
+
+/* line 70, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.glyphicon.glyphicon-edit {
+  font-size: 50px;
+  color: #8B0000;
+}
+
+/* line 75, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+footer {
+  vertical-align: text-bottom;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+/* line 82, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.sign_in {
+  margin-left: 15%;
+}
+
+/* line 85, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.submit_btn {
+  margin-left: 40% !important;
+}
+
+/* line 88, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+.control-label {
+  text-align: left !important;
+}
+
+/* line 91, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+#right-quo {
+  float: right;
+  margin-right: 40%;
+}
+
+/* line 95, /home/action/workspace/artistic-log/app/assets/stylesheets/style.scss */
+#quote {
+  margin-left: 30px;
+}
