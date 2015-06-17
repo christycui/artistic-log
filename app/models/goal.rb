@@ -1,6 +1,5 @@
 class Goal < ActiveRecord::Base
   include Sluggable
-  include ApplicationHelper
   attr_accessor :title1, :title2
   
   belongs_to :user
