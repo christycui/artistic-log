@@ -16,7 +16,7 @@ describe Goal do
   describe '#make_title' do
 
     it 'sets title as formatted title2 if title1 is custom' do
-      goal = Fabricate(:goal, title1: 'Custom', title2: 'play soccer')
+      goal = Fabricate(:goal, title1: 'Custom', title2: 'Play Soccer')
       expect(goal.make_title).to eq('Play Soccer')
     end
 
@@ -42,6 +42,13 @@ describe Goal do
     it "generates a description for the goal" do
       goal = Fabricate(:goal, quantity: '1', unit: 'hour(s)', frequency: 'per day')
       expect(goal.description).to eq("#{goal.title} for 1.0 hour(s) per day")
+    end
+  end
+  
+  describe '#format_title' do
+    it "capitalizes the first letter of title" do
+      goal = Fabricate(:goal, title1: 'Custom', title2: 'play soccer')
+      expect(goal.make_title).to eq('Play Soccer')
     end
   end
   
