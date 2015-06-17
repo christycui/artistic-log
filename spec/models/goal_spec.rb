@@ -9,7 +9,7 @@ describe Goal do
   it { should validate_presence_of(:quantity) }
   
   context 'if title1 has a value of custom' do
-    subject { Fabricate.build(:goal, title1: 'Custom', title2: 'Sleep') }
+    subject { Fabricate.build(:goal, title1: 'Custom', title2: nil) }
     it { should validate_presence_of(:title2) }
   end
   
@@ -42,20 +42,6 @@ describe Goal do
     it "generates a description for the goal" do
       goal = Fabricate(:goal, quantity: '1', unit: 'hour(s)', frequency: 'per day')
       expect(goal.description).to eq("#{goal.title} for 1.0 hour(s) per day")
-    end
-  end
-
-  describe '#make_title1' do
-    it 'sets virtual attribute title1' do
-      goal = Fabricate(:goal, title1: 'Custom')
-      expect(goal.title1).to eq('Custom')
-    end
-  end
-
-  describe '#make_title2' do
-    it 'sets virtual attribute title2' do
-      goal = Fabricate(:goal, title2: 'Sleep')
-      expect(goal.title2).to eq('Sleep')
     end
   end
   

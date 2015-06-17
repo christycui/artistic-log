@@ -6,7 +6,6 @@ class Goal < ActiveRecord::Base
   belongs_to :user
   has_many :entries
   after_validation :make_title
-  before_save :make_title1, :make_title2
   validates_presence_of :title1, :frequency, :unit, :quantity
   validates_presence_of :title2, if: :title1_is_custom?
   
@@ -14,18 +13,10 @@ class Goal < ActiveRecord::Base
   
   def make_title
     if title1_is_custom?
-      self.title = title2.split.map(&:capitalize).join(' ')
+      self.title = format_title(title2) if title2
     else
       self.title = title1
     end
-  end
-  
-  def make_title1
-    self.title1 = title_options.include?(title) ? title : 'Custom'
-  end
-  
-  def make_title2
-    self.title2 = !title_options.include?(title) ? title : ''
   end
   
   def title1_is_custom?
@@ -36,5 +27,9 @@ class Goal < ActiveRecord::Base
     self.title + ' for ' + self.quantity.to_s + ' ' + self.unit + ' ' + self.frequency
   end
   
+  private
+  def format_title(title)		
+    title.split.map(&:capitalize).join(' ')		
+  end
 
 end
